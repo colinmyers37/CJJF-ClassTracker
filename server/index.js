@@ -10,4 +10,6 @@ app.use(express.static("client"));
 
 const port = process.env.PORT || 4000;
 
+app.get("/", (req, res) => console.log("hit server"));
+
 app.listen(port, console.log(`server is running on port ${port}`));
