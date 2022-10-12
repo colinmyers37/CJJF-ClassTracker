@@ -1,22 +1,29 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const path = require("path");
-
 require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("client"));
 
 const port = process.env.PORT || 4000;
 
-const { getLandinPage } = require("./controller/controller");
+const { sequelize } = require("./database/sequelize");
+const { User } = require("./models/user");
+const { Session } = require("./models/session");
+const { Technique } = require("./models/technique");
+User.hasMany(Session);
+Session.belongsTo(User);
+Technique.hasMany(Session);
+Session.belongsTo(Technique);
+// require("./routes/routes")(app);
+// app.get("/", (req, res) => console.log("hit server"));
 
-app.post("/post", (req, res) => {
-  console.log("Connected to React");
-  res.redirect("/");
-});
-app.get("/", (req, res) => console.log("hit server"));
-
-app.listen(port, console.log(`server is running on port ${port}`));
+sequelize
+  .sync({ force: true })
+  .then(() => {
+    app.listen(port, () =>
+      console.log(`DB synced and server running on port ${port}`)
+    );
+  })
+  .catch((err) => console.error(err));
