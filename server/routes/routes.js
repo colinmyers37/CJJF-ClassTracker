@@ -1,3 +1,7 @@
-// const { signup, login } = require("../conroller/signup");
+// const { addSession } = require("../controller/session");
+// const { signup } = require("../controller/signup");
 
-module.exports = app = {};
+module.exports = app = {
+  // app.post('/session', addSession)
+  // app.post('/signup', signup)
+};

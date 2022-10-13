@@ -1,11 +1,12 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
 require("dotenv").config();
 
-app.use(cors());
+const app = express();
 app.use(express.json());
+app.use(cors());
 
+// require("./routes/routes")(app);
 const port = process.env.PORT || 4000;
 
 const { sequelize } = require("./database/sequelize");
@@ -14,10 +15,15 @@ const { Session } = require("./models/session");
 const { Technique } = require("./models/technique");
 User.hasMany(Session);
 Session.belongsTo(User);
-Technique.hasMany(Session);
-Session.belongsTo(Technique);
-// require("./routes/routes")(app);
+Session.hasMany(Technique);
+Technique.belongsTo(Session);
+
 // app.get("/", (req, res) => console.log("hit server"));
+//routes due to routes file not working properly
+const { signup } = require("./controller/signup");
+
+//Signup/Login
+app.post("/signup", signup);
 
 sequelize
   .sync({ force: true })
