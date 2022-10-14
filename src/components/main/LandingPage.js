@@ -15,17 +15,21 @@ const LandingPage = () => {
   };
 
   return (
-    <main className="">
-      <section className="">
+    <main className="d-flex justify-content-center">
+      <section className="text-center">
         <h1 className="">Welcome to CJJF Tracker</h1>
         <h3 className="">Jiu Jitsu Tracker App</h3>
-        <button className="" type={"button"} onClick={startingHandler}>
+        <button
+          className="btn btn-danger"
+          type={"button"}
+          onClick={startingHandler}
+        >
           Get Started
         </button>
         <p className="">
           Already have an account?{" "}
           <button
-            className=".btn btn-danger"
+            className="btn btn-danger"
             onClick={() => {
               dispatch(authActions.setRegister(false));
               navigate("/login");
