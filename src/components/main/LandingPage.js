@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
+import classes from "./LandingPage.module.css";
 
 import authActions from "../../store/authSlice";
 
@@ -15,21 +16,21 @@ const LandingPage = () => {
   };
 
   return (
-    <main className="d-flex justify-content-center">
-      <section className="text-center">
-        <h1 className="">Welcome to CJJF Tracker</h1>
-        <h3 className="">Jiu Jitsu Tracker App</h3>
+    <main className={classes["main"]}>
+      <section className={classes["text-section"]}>
+        <h1 className={classes.heading}>CJJF Tracker</h1>
+        <h3 className={classes.sub}>Track Your Jiu Jitsu</h3>
         <button
-          className="btn btn-danger"
+          className="btn btn-danger btn-lg"
           type={"button"}
           onClick={startingHandler}
         >
-          Get Started
+          Signup
         </button>
-        <p className="">
+        <p className={classes["bot-text"]}>
           Already have an account?{" "}
           <button
-            className="btn btn-danger"
+            className={classes["bot-link"]}
             onClick={() => {
               dispatch(authActions.setRegister(false));
               navigate("/login");
