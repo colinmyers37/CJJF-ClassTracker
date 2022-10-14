@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import authActions from "../../store/authSlice";
 
@@ -24,7 +25,7 @@ const LandingPage = () => {
         <p className="">
           Already have an account?{" "}
           <button
-            className=""
+            className=".btn btn-danger"
             onClick={() => {
               dispatch(authActions.setRegister(false));
               navigate("/login");
