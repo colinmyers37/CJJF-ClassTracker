@@ -26,6 +26,8 @@ const { signup, login } = require("./controller/signup");
 app.post("/signup", signup);
 app.post("/login", login);
 
+//Session Routes
+
 sequelize
   .sync({ force: true })
   .then(() => {
