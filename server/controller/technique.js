@@ -15,12 +15,11 @@ module.exports = {
     }
   },
   addTechnique: async (req, res) => {
-    const { date, time } = req.body;
+    const { name } = req.body;
     const { sessionId } = req.params;
     try {
       const addTechnique = await Technique.create({
-        date,
-        time,
+        name,
         sessionId,
       });
       res.status(200).send(addTechnique);
