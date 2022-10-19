@@ -3,7 +3,7 @@ const jweb = require("jsonwebtoken");
 const { ACCESS_TOKEN_SECRET } = process.env;
 
 module.exports = {
-  isAuthenticated: (req, res, next) => {
+  Authenticater: (req, res, next) => {
     try {
       const headerToken = req.get("Authorization");
 

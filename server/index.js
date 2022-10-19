@@ -23,18 +23,19 @@ Technique.belongsTo(Session);
 const { signup, login } = require("./controller/signup");
 const { addSession, getAllSessions } = require("./controller/session");
 const { getAllTechniques, addTechnique } = require("./controller/technique");
+const { Authenticater } = require("./middleware/auth");
 
 //Signup/Login
 app.post("/signup", signup);
 app.post("/login", login);
 
 //Session Routes
-app.post("/session/:userId", addSession);
-app.get("/session/:userId", getAllSessions);
+app.post("/session/:userId", Authenticater, addSession);
+app.get("/session/:userId", Authenticater, getAllSessions);
 
 //Technique Routes
-app.get("/technique", getAllTechniques);
-app.post("/technique/:sessionId", addTechnique);
+app.get("/technique", Authenticater, getAllTechniques);
+app.post("/technique/:sessionId", Authenticater, addTechnique);
 
 sequelize
   .sync({ force: true })
