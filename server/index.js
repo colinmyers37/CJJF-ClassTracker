@@ -21,12 +21,15 @@ Technique.belongsTo(Session);
 // app.get("/", (req, res) => console.log("hit server"));
 //routes due to routes file not working properly
 const { signup, login } = require("./controller/signup");
+const { addSession, getAllSessions } = require("./controller/session");
 
 //Signup/Login
 app.post("/signup", signup);
 app.post("/login", login);
 
 //Session Routes
+app.post("/session/:userId", addSession);
+app.get("/session/:userId", getAllSessions);
 
 sequelize
   .sync({ force: true })
