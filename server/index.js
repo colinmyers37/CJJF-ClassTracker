@@ -22,6 +22,7 @@ Technique.belongsTo(Session);
 //routes due to routes file not working properly
 const { signup, login } = require("./controller/signup");
 const { addSession, getAllSessions } = require("./controller/session");
+const { getAllTechniques, addTechnique } = require("./controller/technique");
 
 //Signup/Login
 app.post("/signup", signup);
@@ -30,6 +31,10 @@ app.post("/login", login);
 //Session Routes
 app.post("/session/:userId", addSession);
 app.get("/session/:userId", getAllSessions);
+
+//Technique Routes
+app.get("/technique", getAllTechniques);
+app.post("/technique/:sessionId", addTechnique);
 
 sequelize
   .sync({ force: true })

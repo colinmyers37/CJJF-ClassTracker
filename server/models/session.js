@@ -11,11 +11,11 @@ module.exports = {
       primaryKey: true,
     },
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     time: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.TIME,
       allowNull: false,
     },
   }),
