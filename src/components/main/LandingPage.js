@@ -11,7 +11,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const startingHandler = () => {
-    dispatch(authActions.setRegister(true));
+    // dispatch(authActions.setRegister(true));
     navigate("/login");
   };
 

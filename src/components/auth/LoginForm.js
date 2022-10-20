@@ -9,7 +9,7 @@ import axios from "axios";
 
 const LoginForm = () => {
   const [error, setError] = useState("");
-  const register = useSelector((state) => state.auth.isRegister);
+  const register = useSelector((state) => state.isRegister);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
