@@ -20,7 +20,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           {/* {token && (
             <>
-              <Route path="/dashboard" element={<InsightsPage />} />
+              <Route path="/insights" element={<InsightsPage />} />
             </>
           )} */}
         </Routes>

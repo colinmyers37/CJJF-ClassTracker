@@ -31,17 +31,17 @@ const GlobalNavbar = () => {
       <Navbar.Collapse>
         <Nav>
           <Nav.Link href="#">
-            <NavLink to="/AboutUs" className={classes["nav-link"]}>
+            <NavLink to="/aboutus" className={classes["nav-link"]}>
               About Us
             </NavLink>
           </Nav.Link>
           <Nav.Link href="#">
-            <NavLink to="/Insights" className={classes["nav-link"]}>
+            <NavLink to="/insights" className={classes["nav-link"]}>
               Insights
             </NavLink>
           </Nav.Link>
           <Nav.Link href="#">
-            <NavLink to="/Techniques" className={classes["nav-link"]}>
+            <NavLink to="/techniques" className={classes["nav-link"]}>
               Techniques
             </NavLink>
           </Nav.Link>
