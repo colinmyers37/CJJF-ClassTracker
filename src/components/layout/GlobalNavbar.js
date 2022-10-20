@@ -1,12 +1,15 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./GlobalNavbar.module.css";
 import "../../App.css";
-
-// import { Link } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
 
 const GlobalNavbar = () => {
+  // const token = useSelector((state) => state.auth.token);
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
   return (
     <Navbar
       bg="light"
@@ -27,9 +30,21 @@ const GlobalNavbar = () => {
       <Navbar.Toggle className="coloring" />
       <Navbar.Collapse>
         <Nav>
-          <Nav.Link href="#">About Us</Nav.Link>
-          <Nav.Link href="#">Insights</Nav.Link>
-          <Nav.Link href="#">Techniques</Nav.Link>
+          <Nav.Link href="#">
+            <NavLink to="/AboutUs" className={classes["nav-link"]}>
+              About Us
+            </NavLink>
+          </Nav.Link>
+          <Nav.Link href="#">
+            <NavLink to="/Insights" className={classes["nav-link"]}>
+              Insights
+            </NavLink>
+          </Nav.Link>
+          <Nav.Link href="#">
+            <NavLink to="/Techniques" className={classes["nav-link"]}>
+              Techniques
+            </NavLink>
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
