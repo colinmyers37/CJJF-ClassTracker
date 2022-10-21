@@ -2,39 +2,35 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-
-import authActions from "../../store/authSlice";
-
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
+import { login, toggleRegister } from "../../store/authSlice";
+import authSlice from "../../store/authSlice";
+// console.log(authSlice);
 const LoginForm = () => {
   const [error, setError] = useState("");
   const register = useSelector((state) => state.isRegister);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const url = "http://localhost:4000";
-
-  const formInitialValues = {
-    username: "",
-    password: "",
-  };
-
   const handleSubmit = async (values) => {
     try {
       const response = await axios.post(
-        register ? `${url}/register` : `${url}/login`,
+        register ? `/api/signup` : `/api/login`,
         values
       );
       const data = response.data;
+
       dispatch(
-        authActions.login({
+        authSlice.actions.login({
           token: data.token,
           sessionExp: data.expirationTime,
           userId: data.userId,
+          userName: data.username,
         })
       );
-      navigate("/dashboard");
+      navigate("/aboutus");
     } catch (err) {
       console.log(err);
       setError(err.response.data);
@@ -53,20 +49,20 @@ const LoginForm = () => {
   return (
     <div className="">
       <h1>{!register ? "Login" : "Register for an account"}</h1>
-
       <Formik
-        initialValues={formInitialValues}
+        initialValues={{
+          username: "",
+          password: "",
+        }}
         onSubmit={(values, { resetForm }) => {
           handleSubmit(values);
           resetForm({ values: "" });
         }}
       >
-        {({ isSubmitting, dirty }) => (
+        {({ isSubmitting }) => (
           <Form className="">
             <div className="">
-              <label className="" htmlFor="username">
-                Username
-              </label>
+              <label className="">Username</label>
               <Field
                 className=""
                 name="username"
@@ -84,21 +80,19 @@ const LoginForm = () => {
             </div>
             <div className="">
               <p className="">{register ? "Need to log in?" : "No Account?"}</p>
-              <button
+              <Button
                 className=""
                 type="button"
-                onClick={() => dispatch(authActions.toggleRegister())}
+                onClick={() => dispatch(authSlice.actions.toggleRegister())}
               >
-                {register ? "Login here." : "Register here."}
-              </button>
+                {register ? "Login here." : "Register Here"}
+              </Button>
             </div>
-            <button loading={isSubmitting} disabled={!dirty} type={"submit"}>
-              {!register ? "Login" : "Register"}
-            </button>
+            <Button type={"submit"}>{!register ? "Login" : "Register"}</Button>
           </Form>
         )}
       </Formik>
-      <p className="">{error}</p>
+      {/* <p className="">{error}</p> */}
     </div>
   );
 };

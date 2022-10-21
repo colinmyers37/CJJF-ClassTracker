@@ -26,8 +26,8 @@ const { getAllTechniques, addTechnique } = require("./controller/technique");
 const { Authenticater } = require("./middleware/auth");
 
 //Signup/Login
-app.post("/signup", signup);
-app.post("/login", login);
+app.post("/api/signup", signup);
+app.post("/api/login", login);
 
 //Session Routes
 app.post("/session/:userId", Authenticater, addSession);

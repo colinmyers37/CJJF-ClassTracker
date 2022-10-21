@@ -67,7 +67,7 @@ module.exports = {
         );
 
         if (isAuthenticated) {
-          const token = createToken(
+          const token = makeToken(
             knownUser.dataValues.username,
             knownUser.dataValues.id
           );

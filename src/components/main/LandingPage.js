@@ -32,7 +32,7 @@ const LandingPage = () => {
           <button
             className={classes["bot-link"]}
             onClick={() => {
-              dispatch(authActions.setRegister(false));
+              // dispatch(authActions.setRegister(false));
               navigate("/login");
             }}
           >

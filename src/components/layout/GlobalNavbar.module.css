@@ -6,6 +6,7 @@
 .nav-link {
   text-decoration: none;
   color: black;
+  margin-left: 20px;
 }
 .nav-link:hover {
   color: red;

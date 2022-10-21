@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // Init state
 const initialState = {
   token: "",
+  userName: "",
   userId: "",
   isRegister: false,
 };
@@ -35,6 +36,7 @@ const getLocalData = () => {
   return {
     token: storedToken,
     duration: remainingTime,
+    userName: storedUserName,
     userId: storedUserId,
   };
 };
@@ -44,6 +46,7 @@ const localData = getLocalData();
 if (localData) {
   initialState.token = localData.token;
   initialState.userId = localData.userId;
+  initialState.userName = localData.userName;
 }
 
 //* AUTH SLICE //
@@ -54,10 +57,12 @@ const authSlice = createSlice({
     login(state, action) {
       state.token += action.payload.token;
       state.userId += action.payload.userId;
+      state.userName += action.payload.userName;
       const sessionExp = action.payload.sessionExp;
 
       localStorage.setItem("exp", sessionExp);
       localStorage.setItem("token", state.token);
+      localStorage.setItem("userName", state.userName);
       localStorage.setItem("userId", state.userId);
 
       const remainingTime = calcTime(sessionExp);
@@ -67,9 +72,11 @@ const authSlice = createSlice({
     logout(state) {
       state.token = "";
       state.userId = "";
+      state.userName = "";
 
       localStorage.removeItem("exp");
       localStorage.removeItem("token");
+      localStorage.removeItem("userName");
       localStorage.removeItem("userId");
 
       if (logoutTimer) {
@@ -84,7 +91,7 @@ const authSlice = createSlice({
     },
   },
 });
-
-export const authActions = authSlice.actions;
+console.log(authSlice.actions);
+export const { login, toggleRegister } = authSlice.actions;
 
 export default authSlice.reducer;

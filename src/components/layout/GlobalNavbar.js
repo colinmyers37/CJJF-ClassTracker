@@ -30,21 +30,17 @@ const GlobalNavbar = () => {
       <Navbar.Toggle className="coloring" />
       <Navbar.Collapse>
         <Nav>
-          <Nav.Link href="#">
-            <NavLink to="/aboutus" className={classes["nav-link"]}>
-              About Us
-            </NavLink>
-          </Nav.Link>
-          <Nav.Link href="#">
-            <NavLink to="/insights" className={classes["nav-link"]}>
-              Insights
-            </NavLink>
-          </Nav.Link>
-          <Nav.Link href="#">
-            <NavLink to="/techniques" className={classes["nav-link"]}>
-              Techniques
-            </NavLink>
-          </Nav.Link>
+          <NavLink to="/aboutus" className={classes["nav-link"]}>
+            About Us
+          </NavLink>
+
+          <NavLink to="/insights" className={classes["nav-link"]}>
+            Insights
+          </NavLink>
+
+          <NavLink to="/techniques" className={classes["nav-link"]}>
+            Techniques
+          </NavLink>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
