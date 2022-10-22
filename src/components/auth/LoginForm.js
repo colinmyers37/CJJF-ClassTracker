@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 
-import { login, toggleRegister } from "../../store/authSlice";
-import authSlice from "../../store/authSlice";
+import { login } from "../../store/locationSlice";
+
 // console.log(authSlice);
 const LoginForm = () => {
   const [error, setError] = useState("");
   const register = useSelector((state) => state.isRegister);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleLogin = () => {
+    dispatch(login());
+  };
+  useEffect(() => {
+    handleLogin();
+  });
 
   const handleSubmit = async (values) => {
     try {
@@ -23,7 +30,7 @@ const LoginForm = () => {
       const data = response.data;
 
       dispatch(
-        authSlice.actions.login({
+        authActions.login({
           token: data.token,
           sessionExp: data.expirationTime,
           userId: data.userId,
@@ -83,7 +90,7 @@ const LoginForm = () => {
               <Button
                 className=""
                 type="button"
-                onClick={() => dispatch(authSlice.actions.toggleRegister())}
+                onClick={() => dispatch(authActions.toggleRegister())}
               >
                 {register ? "Login here." : "Register Here"}
               </Button>

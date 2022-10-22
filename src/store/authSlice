@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Init state
+//^ INITIAL STATE AND TIMER //
 const initialState = {
   token: "",
   userName: "",
@@ -10,25 +10,27 @@ const initialState = {
 
 let logoutTimer;
 
-// remaining time
-const calcTime = (exp) => {
+//& TIME CALCULATOR //
+const calculateRemainingTime = (exp) => {
   const currentTime = new Date().getTime();
   const expTime = exp;
   const remainingTime = expTime - currentTime;
   return remainingTime;
 };
 
-// Local Data
+//& LOCAL DATA HELPER //
 const getLocalData = () => {
   const storedToken = localStorage.getItem("token");
   const storedExp = localStorage.getItem("exp");
+  const storedUserName = localStorage.getItem("userName");
   const storedUserId = localStorage.getItem("userId");
 
-  const remainingTime = calcTime(storedExp);
+  const remainingTime = calculateRemainingTime(storedExp);
 
   if (remainingTime <= 1000 * 60 * 30) {
     localStorage.removeItem("token");
     localStorage.removeItem("exp");
+    localStorage.removeItem("userName");
     localStorage.removeItem("userId");
     return null;
   }
@@ -54,44 +56,46 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    login(state, action) {
-      state.token += action.payload.token;
-      state.userId += action.payload.userId;
-      state.userName += action.payload.userName;
-      const sessionExp = action.payload.sessionExp;
-
-      localStorage.setItem("exp", sessionExp);
-      localStorage.setItem("token", state.token);
-      localStorage.setItem("userName", state.userName);
-      localStorage.setItem("userId", state.userId);
-
-      const remainingTime = calcTime(sessionExp);
-
-      logoutTimer = setTimeout(authSlice.caseReducers.logout, remainingTime);
-    },
-    logout(state) {
-      state.token = "";
-      state.userId = "";
-      state.userName = "";
-
-      localStorage.removeItem("exp");
-      localStorage.removeItem("token");
-      localStorage.removeItem("userName");
-      localStorage.removeItem("userId");
-
-      if (logoutTimer) {
-        clearTimeout(logoutTimer);
-      }
-    },
-    setRegister(state, action) {
-      state.isRegister = action.payload;
-    },
-    toggleRegister(state) {
-      state.isRegister = !state.isRegister;
-    },
+    //   login(state, action) {
+    //     state.token += action.payload.token;
+    //     state.userId += action.payload.userId;
+    //     state.userName += action.payload.userName;
+    //     const sessionExp = action.payload.sessionExp;
+    //     localStorage.setItem("exp", sessionExp);
+    //     localStorage.setItem("token", state.token);
+    //     localStorage.setItem("userName", state.userName);
+    //     localStorage.setItem("userId", state.userId);
+    //     const remainingTime = calculateRemainingTime(sessionExp);
+    //     logoutTimer = setTimeout(authSlice.caseReducers.logout, remainingTime);
+    //   },
+    //   logout(state) {
+    //     state.token = "";
+    //     state.userId = "";
+    //     state.userName = "";
+    //     localStorage.removeItem("exp");
+    //     localStorage.removeItem("token");
+    //     localStorage.removeItem("userName");
+    //     localStorage.removeItem("userId");
+    //     if (logoutTimer) {
+    //       clearTimeout(logoutTimer);
+    //     }
+    //   },
+    //   setRegister(state, action) {
+    //     state.isRegister = action.payload;
+    //   },
+    //   toggleRegister(state) {
+    //     state.isRegister = !state.isRegister;
+    //   },
   },
 });
-console.log(authSlice.actions);
-export const { login, toggleRegister } = authSlice.actions;
+const { actions, reducer } = authSlice;
+export const { login } = actions;
 
-export default authSlice.reducer;
+export default reducer;
+
+// const authActions = authSlice.actions;
+// console.log(authSlice);
+// export default =  authSlice.reducer{
+//   authActions,
+//   authSlice,
+// };
