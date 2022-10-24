@@ -11,28 +11,10 @@ import InsightsPage from "./components/user/InsightsPage";
 import AboutUs from "./components/user/AboutUs";
 import Techniques from "./components/user/Techniques";
 
-import { save } from "./store/locationSlice";
 function App() {
   // const token = useSelector((state) => state.auth.token);
   // console.log(save);
-  const [locationName, setLocationName] = useState("");
-  const dispatch = useDispatch();
-  const { location } = useSelector((state) => state);
-  const handleData = (e) => {
-    setLocationName(e.target.value);
-  };
-  const handleSave = () => {
-    const ifPrestent = location.includes(locationName);
-    if (locationName !== undefined && !ifPrestent) {
-      dispatch(save(locationName));
-      setLocationName("");
-    } else {
-      setLocationName("");
-    }
-  };
-  useEffect(() => {
-    handleSave();
-  });
+
   return (
     <>
       <GlobalNavbar />
