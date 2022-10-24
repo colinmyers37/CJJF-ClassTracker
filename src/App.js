@@ -10,6 +10,7 @@ import LoginForm from "./components/auth/LoginForm";
 import InsightsPage from "./components/user/InsightsPage";
 import AboutUs from "./components/user/AboutUs";
 import Techniques from "./components/user/Techniques";
+import SignupForm from "./components/auth/SignupForm";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -22,6 +23,8 @@ function App() {
         <Routes>
           <Route index element={<LandingPage />}></Route>
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignupForm />} />
+
           {token && (
             <>
               <Route path="/aboutus" element={<AboutUs />} />

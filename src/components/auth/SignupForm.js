@@ -5,36 +5,21 @@ import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 
-import { authActions } from "../../store/authSlice.js";
-
-// console.log(authSlice);
-const LoginForm = () => {
+const SignupForm = () => {
   const [error, setError] = useState("");
   const register = useSelector((state) => state.isRegister);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
-    const url = register ? `/api/signup` : `/api/login`;
+    const url = `/api/signup`;
 
     try {
-      const response = await axios.post(
-        // register ? `/api/signup` : `/api/login`,
-        url,
-        values
-      );
+      const response = await axios.post(url, values);
 
       const data = response.data;
 
-      dispatch(
-        authActions.login({
-          token: data.token,
-          sessionExp: data.expirationTime,
-          userId: data.userId,
-          userName: data.username,
-        })
-      );
-      navigate("/aboutus");
+      navigate("/login");
     } catch (err) {
       console.log(err);
       setError(err.response.data);
@@ -49,10 +34,9 @@ const LoginForm = () => {
       }
     }
   };
-
   return (
     <div className="">
-      <h1>{!register ? "Login" : "Register for an account"}</h1>
+      <h1>Signup</h1>
       <Formik
         initialValues={{
           username: "",
@@ -85,7 +69,7 @@ const LoginForm = () => {
               />
             </div>
 
-            <Button type={"submit"}>Login</Button>
+            <Button type={"submit"}>Signup</Button>
           </Form>
         )}
       </Formik>
@@ -94,4 +78,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
