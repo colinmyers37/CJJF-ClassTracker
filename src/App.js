@@ -2,8 +2,8 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 // import { useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+
 import GlobalNavbar from "./components/layout/GlobalNavbar";
 import LandingPage from "./components/main/LandingPage";
 import LoginForm from "./components/auth/LoginForm";

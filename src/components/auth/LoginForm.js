@@ -5,7 +5,7 @@ import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 
-import { login } from "../../store/locationSlice";
+import { authActions } from "../../store/authSlice.js";
 
 // console.log(authSlice);
 const LoginForm = () => {
@@ -14,13 +14,6 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    dispatch(login());
-  };
-  useEffect(() => {
-    handleLogin();
-  });
-
   const handleSubmit = async (values) => {
     try {
       const response = await axios.post(
@@ -28,6 +21,7 @@ const LoginForm = () => {
         values
       );
       const data = response.data;
+      console.log(data);
 
       dispatch(
         authActions.login({
@@ -37,7 +31,7 @@ const LoginForm = () => {
           userName: data.username,
         })
       );
-      navigate("/aboutus");
+      navigate("/insights");
     } catch (err) {
       console.log(err);
       setError(err.response.data);
@@ -66,10 +60,12 @@ const LoginForm = () => {
           resetForm({ values: "" });
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, dirty }) => (
           <Form className="">
             <div className="">
-              <label className="">Username</label>
+              <label className="" htmlFor="username">
+                Username
+              </label>
               <Field
                 className=""
                 name="username"
@@ -92,14 +88,16 @@ const LoginForm = () => {
                 type="button"
                 onClick={() => dispatch(authActions.toggleRegister())}
               >
-                {register ? "Login here." : "Register Here"}
+                {register ? "Login here." : "Register here."}
               </Button>
             </div>
-            <Button type={"submit"}>{!register ? "Login" : "Register"}</Button>
+            <Button disabled={!dirty} type={"submit"}>
+              {!register ? "Login" : "Register"}
+            </Button>
           </Form>
         )}
       </Formik>
-      {/* <p className="">{error}</p> */}
+      {/* <p className=''>{error}</p> */}
     </div>
   );
 };

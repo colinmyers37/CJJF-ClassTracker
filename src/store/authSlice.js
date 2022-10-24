@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-//^ INITIAL STATE AND TIMER //
+//INIT STATE AND TIMER //
 const initialState = {
   token: "",
   userName: "",
@@ -10,7 +10,7 @@ const initialState = {
 
 let logoutTimer;
 
-//& TIME CALCULATOR //
+//TIME CALC //
 const calculateRemainingTime = (exp) => {
   const currentTime = new Date().getTime();
   const expTime = exp;
@@ -18,7 +18,7 @@ const calculateRemainingTime = (exp) => {
   return remainingTime;
 };
 
-//& LOCAL DATA HELPER //
+//LOCAL DATA HELP //
 const getLocalData = () => {
   const storedToken = localStorage.getItem("token");
   const storedExp = localStorage.getItem("exp");
@@ -59,7 +59,7 @@ const authSlice = createSlice({
     login(state, action) {
       state.token += action.payload.token;
       state.userId += action.payload.userId;
-      state.userName += action.payload.userName;
+      state.userName = action.payload.userName;
       const sessionExp = action.payload.sessionExp;
       localStorage.setItem("exp", sessionExp);
       localStorage.setItem("token", state.token);
@@ -88,11 +88,9 @@ const authSlice = createSlice({
     },
   },
 });
-const { actions, reducer } = authSlice;
-export const { login } = actions;
+export const authActions = authSlice.actions;
 
-export default reducer;
-
+export default authSlice.reducer;
 // const authActions = authSlice.actions;
 // console.log(authSlice);
 // export default =  authSlice.reducer{

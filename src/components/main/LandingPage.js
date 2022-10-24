@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./LandingPage.module.css";
 
-import authActions from "../../store/authSlice";
+// import authActions from "../../store/authSlice.js";
 
 const LandingPage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const startingHandler = () => {
