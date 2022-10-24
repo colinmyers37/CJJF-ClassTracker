@@ -20,8 +20,8 @@ const LoginForm = () => {
         register ? `/api/signup` : `/api/login`,
         values
       );
+
       const data = response.data;
-      console.log(data);
 
       dispatch(
         authActions.login({
@@ -31,7 +31,7 @@ const LoginForm = () => {
           userName: data.username,
         })
       );
-      navigate("/insights");
+      navigate("/aboutus");
     } catch (err) {
       console.log(err);
       setError(err.response.data);

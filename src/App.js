@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import React from "react";
 
 import GlobalNavbar from "./components/layout/GlobalNavbar";
@@ -12,7 +12,7 @@ import AboutUs from "./components/user/AboutUs";
 import Techniques from "./components/user/Techniques";
 
 function App() {
-  // const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.auth.token);
   // console.log(save);
 
   return (
@@ -22,8 +22,14 @@ function App() {
         <Routes>
           <Route index element={<LandingPage />}></Route>
           <Route path="/login" element={<LoginForm />} />
-
-          <>
+          {token && (
+            <>
+              <Route path="/aboutus" element={<AboutUs />} />
+              <Route path="/insights" element={<InsightsPage />} />
+              <Route path="/techniques" element={<Techniques />} />
+            </>
+          )}
+          {/* <>
             <Route path="/insights" element={<InsightsPage />} />
           </>
           <>
@@ -31,7 +37,7 @@ function App() {
           </>
           <>
             <Route path="/techniques" element={<Techniques />} />
-          </>
+          </> */}
         </Routes>
       </main>
     </>
