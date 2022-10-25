@@ -38,7 +38,7 @@ app.get("/technique", Authenticater, getAllTechniques);
 app.post("/technique/:sessionId", Authenticater, addTechnique);
 
 sequelize
-  .sync({ force: true })
+  .sync({ alter: true })
   .then(() => {
     app.listen(port, () =>
       console.log(`DB synced and server running on port ${port}`)
