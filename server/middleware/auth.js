@@ -1,5 +1,5 @@
 require("dotenv").config();
-const jweb = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const { ACCESS_TOKEN_SECRET } = process.env;
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
       let token;
 
       try {
-        token = jweb.verify(headerToken, ACCESS_TOKEN_SECRET);
+        token = jwt.verify(headerToken, ACCESS_TOKEN_SECRET);
       } catch (err) {
         err.statusCode = 500;
         throw err;

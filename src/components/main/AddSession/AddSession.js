@@ -1,17 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { Button } from "react-bootstrap";
-import { DatePickerField } from "../../UI/DatePicker";
+import Select from "react-select";
+import { useSelector } from "react-redux";
 
 const AddSession = () => {
-  const [error, setError] = useState("");
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { auth } = useSelector((state) => state);
+  let lessonPlan;
+
   const handleSubmit = async (values) => {
-    const url = `"/session/:userId"`;
+    console.log(values.date);
+
+    const body = {
+      ...values,
+      lesson: lessonPlan,
+      userId: auth.userId,
+    };
+    axios.post("/session", body);
+  };
+  const [techniques, setTechniques] = useState([]);
+
+  const options = techniques.map((tech) => {
+    return { value: tech.name, label: tech.name };
+  });
+
+  useEffect(() => {
+    axios.get("/technique").then((res) => setTechniques(res.data));
+  }, []);
+  console.log(techniques);
+  const handleChange = (selectedOption) => {
+    lessonPlan = selectedOption;
+    console.log("handleChange", selectedOption);
   };
   return (
     <div className="">
@@ -19,35 +39,32 @@ const AddSession = () => {
       <Formik
         initialValues={{
           date: "",
-          time: "",
+          time: null,
           userId: "",
+          lesson: null,
         }}
         onSubmit={(values, { resetForm }) => {
           handleSubmit(values);
           resetForm({ values: "" });
         }}
       >
-        {({ isSubmitting, dirty }) => (
-          <Form className="">
-            <div className="">
-              <label className="" htmlFor="Date">
-                Date
-              </label>
-              <DatePickerField name="date" />
-              <label className="" htmlFor="password">
-                Password
-              </label>
-              <Field
-                className=""
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </div>
-
-            <Button type={"submit"}>Signup</Button>
-          </Form>
-        )}
+        <Form className="">
+          <div className="">
+            <label className="" htmlFor="Date">
+              Date
+            </label>
+            <Field type="date" name="date"></Field>
+            <Field type="test" name="userId" value={1} />
+          </div>
+          <Select
+            options={options}
+            isMulti={true}
+            onChange={handleChange}
+            htmlFor="lesson"
+            name="lesson"
+          />
+          <Button type={"submit"}>Add Session</Button>
+        </Form>
       </Formik>
     </div>
   );

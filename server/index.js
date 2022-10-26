@@ -13,10 +13,9 @@ const { sequelize } = require("./database/sequelize");
 const { User } = require("./models/user");
 const { Session } = require("./models/session");
 const { Technique } = require("./models/technique");
+
 User.hasMany(Session);
 Session.belongsTo(User);
-Session.hasMany(Technique);
-Technique.belongsTo(Session);
 
 // app.get("/", (req, res) => console.log("hit server"));
 //routes due to routes file not working properly
@@ -30,12 +29,13 @@ app.post("/api/signup", signup);
 app.post("/api/login", login);
 
 //Session Routes
-app.post("/session/:userId", Authenticater, addSession);
-app.get("/session/:userId", Authenticater, getAllSessions);
+app.post("/session", addSession);
+app.get("/session/:userId", getAllSessions);
 
 //Technique Routes
-app.get("/technique", Authenticater, getAllTechniques);
-app.post("/technique/:sessionId", Authenticater, addTechnique);
+app.get("/technique", getAllTechniques);
+app.post("/technique", addTechnique);
+// app.get("/technique", getTechnique);
 
 sequelize
   .sync({ alter: true })
