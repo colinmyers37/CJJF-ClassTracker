@@ -1,4 +1,5 @@
 const { Technique } = require("../models/technique");
+const colors = require("colors");
 
 module.exports = {
   getAllTechniques: async (req, res) => {
@@ -10,6 +11,7 @@ module.exports = {
     }
   },
   addTechnique: async (req, res) => {
+    console.log(req.body);
     const { name } = req.body;
     try {
       const addTechnique = await Technique.create({

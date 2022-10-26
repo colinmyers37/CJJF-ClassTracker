@@ -31,7 +31,7 @@ const AddSession = () => {
   console.log(techniques);
   const handleChange = (selectedOption) => {
     lessonPlan = selectedOption;
-    console.log("handleChange", selectedOption);
+    // console.log("handleChange", selectedOption);
   };
   return (
     <div className="">
@@ -40,7 +40,7 @@ const AddSession = () => {
         initialValues={{
           date: "",
           time: null,
-          userId: "",
+          userId: auth.userId,
           lesson: null,
         }}
         onSubmit={(values, { resetForm }) => {
@@ -54,7 +54,6 @@ const AddSession = () => {
               Date
             </label>
             <Field type="date" name="date"></Field>
-            <Field type="test" name="userId" value={1} />
           </div>
           <Select
             options={options}
