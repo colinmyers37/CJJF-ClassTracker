@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../App.css";
 
 const SignupForm = () => {
   const [error, setError] = useState("");
@@ -35,45 +38,50 @@ const SignupForm = () => {
     }
   };
   return (
-    <div className="">
-      <h1>Signup</h1>
-      <Formik
-        initialValues={{
-          username: "",
-          password: "",
-        }}
-        onSubmit={(values, { resetForm }) => {
-          handleSubmit(values);
-          resetForm({ values: "" });
-        }}
-      >
-        {({ isSubmitting, dirty }) => (
-          <Form className="">
-            <div className="">
-              <label className="" htmlFor="username">
-                Username
-              </label>
-              <Field
-                className=""
-                name="username"
-                placeholder="Email or username"
-              />
-              <label className="" htmlFor="password">
-                Password
-              </label>
-              <Field
-                className=""
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </div>
-
-            <Button type={"submit"}>Signup</Button>
-          </Form>
-        )}
-      </Formik>
-      <p className="">{error}</p>
+    <div className="login-main">
+      <section className="login-card">
+        <div className="card-body py-5 px-md-5 text-center">
+          <h1>Login</h1>
+          <Formik
+            initialValues={{
+              username: "",
+              password: "",
+            }}
+            onSubmit={(values, { resetForm }) => {
+              handleSubmit(values);
+              resetForm({ values: "" });
+            }}
+            className="login-help"
+          >
+            {({ isSubmitting, dirty }) => (
+              <Form className="align-items-center d-flex flex-column">
+                <div className="form-outline mb-4">
+                  <Field
+                    className="form-control"
+                    name="username"
+                    placeholder="Email or username"
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <Field
+                    className="form-control"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </div>
+                <Button type={"submit"} className="btn btn-danger w-50">
+                  Signup
+                </Button>
+              </Form>
+            )}
+          </Formik>
+          <p className="">{error}</p>
+          <Link to="/login" className="login-link">
+            Login Here
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

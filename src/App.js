@@ -32,15 +32,6 @@ function App() {
               <Route path="/techniques" element={<Techniques />} />
             </>
           )}
-          {/* <>
-            <Route path="/insights" element={<InsightsPage />} />
-          </>
-          <>
-            <Route path="/aboutus" element={<AboutUs />} />
-          </>
-          <>
-            <Route path="/techniques" element={<Techniques />} />
-          </> */}
         </Routes>
       </main>
     </>

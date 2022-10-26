@@ -37,3 +37,22 @@
     transform: rotate(360deg);
   }
 }
+.login-card {
+  border: black solid;
+  width: 600px;
+  height: 320px;
+  background-color: white;
+  margin-bottom: 100px;
+  border-radius: 20px;
+}
+.login-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./img/CJJF_gradient.jpg");
+  height: 100vh;
+}
+.login-link {
+  text-decoration: none;
+  color: red;
+}
