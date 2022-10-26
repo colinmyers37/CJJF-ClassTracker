@@ -19,7 +19,7 @@ module.exports = {
       allowNull: true,
     },
     lesson: {
-      type: DataTypes.JSON,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
   }),

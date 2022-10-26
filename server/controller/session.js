@@ -7,15 +7,15 @@ module.exports = {
     const { date, time, lesson, userId } = req.body;
 
     try {
-      console.log({
-        date,
-        userId,
-        lesson: JSON.stringify(lesson),
-      });
+      // console.log({
+      //   date,
+      //   userId,
+      //   lesson: JSON.stringify(lesson),
+      // });
       const addSession = await Session.create({
         date,
         userId,
-        lesson: JSON.stringify(lesson),
+        lesson,
       });
       res.status(200).send(addSession);
     } catch (err) {

@@ -18,6 +18,7 @@ const AddSession = () => {
       userId: auth.userId,
     };
     axios.post("/session", body);
+    window.location.reload();
   };
   const [techniques, setTechniques] = useState([]);
 
@@ -28,10 +29,10 @@ const AddSession = () => {
   useEffect(() => {
     axios.get("/technique").then((res) => setTechniques(res.data));
   }, []);
-  console.log(techniques);
+  // console.log(techniques);
   const handleChange = (selectedOption) => {
-    lessonPlan = selectedOption;
-    // console.log("handleChange", selectedOption);
+    lessonPlan = selectedOption.map((option) => option.value).join("->");
+    // console.log(selectedOption.map((option) => option.value).join(","));
   };
   return (
     <div className="">

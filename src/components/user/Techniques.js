@@ -1,5 +1,6 @@
 import React from "react";
 import AddTechnique from "../main/AddTechnique/AddTechnique";
+
 const Techniques = () => {
   return (
     <div>
