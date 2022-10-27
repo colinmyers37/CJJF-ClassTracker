@@ -9,6 +9,7 @@ const AddTechnique = () => {
       name: values.name,
     };
     axios.post("/technique", body);
+    window.location.reload();
   };
   return (
     <div style={{ display: "flex" }}>
@@ -37,7 +38,7 @@ const AddTechnique = () => {
               className="btn-danger"
               type={"submit"}
               style={{
-                width: "15vw",
+                width: "150px",
                 backgroundColor: "#A11F22",
                 padding: "0px",
                 margin: "0px",
