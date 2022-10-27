@@ -59,8 +59,8 @@ const SessionCard = () => {
                 textAlign: "center",
               }}
             >
-              <h2>Techniques Learned</h2>
-              <h4>{session.lesson}</h4>
+              <h4>Techniques Learned</h4>
+              <h3>{session.lesson}</h3>
             </div>
           </div>
         );
