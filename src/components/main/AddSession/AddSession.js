@@ -35,8 +35,20 @@ const AddSession = () => {
     // console.log(selectedOption.map((option) => option.value).join(","));
   };
   return (
-    <div className="">
-      <h1>Add Session</h1>
+    <div
+      style={{
+        backgroundColor: "#D3D3D3",
+        width: "75vw",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: "10px",
+        border: "2px solid",
+        margin: "30px",
+      }}
+    >
+      <h2>Add Session</h2>
       <Formik
         initialValues={{
           date: "",
@@ -49,12 +61,17 @@ const AddSession = () => {
           resetForm({ values: "" });
         }}
       >
-        <Form className="">
+        <Form
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <div className="">
             <label className="" htmlFor="Date">
               Date
             </label>
-            <Field type="date" name="date"></Field>
+            <Field type="date" name="date" style={{ width: "60vw" }}></Field>
           </div>
           <Select
             options={options}
@@ -63,7 +80,21 @@ const AddSession = () => {
             htmlFor="lesson"
             name="lesson"
           />
-          <Button type={"submit"}>Add Session</Button>
+          <div
+            style={{
+              width: "60vw",
+              alignItems: "center",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Button
+              type={"submit"}
+              style={{ width: "40vw", backgroundColor: "#A11F22" }}
+            >
+              Add Session
+            </Button>
+          </div>
         </Form>
       </Formik>
     </div>
