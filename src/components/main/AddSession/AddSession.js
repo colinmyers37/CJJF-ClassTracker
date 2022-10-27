@@ -31,7 +31,7 @@ const AddSession = () => {
   }, []);
   // console.log(techniques);
   const handleChange = (selectedOption) => {
-    lessonPlan = selectedOption.map((option) => option.value).join("->");
+    lessonPlan = selectedOption.map((option) => option.value).join(" - ");
     // console.log(selectedOption.map((option) => option.value).join(","));
   };
   return (
@@ -86,6 +86,7 @@ const AddSession = () => {
               alignItems: "center",
               display: "flex",
               flexDirection: "column",
+              marginLeft: "17px",
             }}
           >
             <Button

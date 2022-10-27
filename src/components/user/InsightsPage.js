@@ -15,7 +15,7 @@ const InsightsPage = () => {
         alignItems: "center",
       }}
     >
-      <h2 style={{ fontSize: "30px" }}>Insights</h2>
+      <h2 style={{ fontSize: "30px", color: "white" }}>Insights</h2>
       <div
         style={{
           backgroundColor: "white",

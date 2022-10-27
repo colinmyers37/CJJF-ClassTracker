@@ -3,13 +3,18 @@ import { Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./GlobalNavbar.module.css";
+import { Button } from "bootstrap";
 import "../../App.css";
-// import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../store/authSlice.js";
+import { useDispatch } from "react-redux";
 
 const GlobalNavbar = () => {
   // const token = useSelector((state) => state.auth.token);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const navigate = useNavigate();
+  const logoutHandler = () => {
+    dispatch(authActions.logout());
+  };
   return (
     <Navbar
       bg="light"
@@ -40,6 +45,13 @@ const GlobalNavbar = () => {
 
           <NavLink to="/techniques" className={classes["nav-link"]}>
             Techniques
+          </NavLink>
+          <NavLink
+            to="/"
+            className={classes["nav-link"]}
+            onClick={logoutHandler}
+          >
+            Logout
           </NavLink>
         </Nav>
       </Navbar.Collapse>

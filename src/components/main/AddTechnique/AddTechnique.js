@@ -11,8 +11,7 @@ const AddTechnique = () => {
     axios.post("/technique", body);
   };
   return (
-    <div className="">
-      <h1>Add Technique</h1>
+    <div style={{ display: "flex" }}>
       <Formik
         initialValues={{
           name: "",
@@ -23,13 +22,30 @@ const AddTechnique = () => {
         }}
       >
         <Form className="">
-          <div className="">
-            <label className="" htmlFor="name">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <label className="" htmlFor="name" style={{ fontWeight: "bold" }}>
               Technique Name
             </label>
             <Field type="text" name="name"></Field>
+            <Button
+              className="btn-danger"
+              type={"submit"}
+              style={{
+                width: "15vw",
+                backgroundColor: "#A11F22",
+                padding: "0px",
+                margin: "0px",
+              }}
+            >
+              Add Technique
+            </Button>
           </div>
-          <Button type={"submit"}>Add Technique</Button>
         </Form>
       </Formik>
     </div>
