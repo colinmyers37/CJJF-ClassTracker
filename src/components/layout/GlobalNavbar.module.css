@@ -4,6 +4,7 @@
   max-height: 50px;
 }
 .nav-link {
+  font-size: 1.2rem;
   text-decoration: none;
   color: black;
   margin-left: 20px;

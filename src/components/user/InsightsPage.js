@@ -6,7 +6,7 @@ const InsightsPage = () => {
   return (
     <div className="">
       <h1>Insights Page</h1>
-      <AddSession />
+      {/* <AddSession /> */}
       <SessionCard />
     </div>
   );
