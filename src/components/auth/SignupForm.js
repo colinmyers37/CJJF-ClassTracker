@@ -41,7 +41,7 @@ const SignupForm = () => {
     <div className="login-main">
       <section className="login-card">
         <div className="card-body py-5 px-md-5 text-center">
-          <h1>Login</h1>
+          <h1>Signup</h1>
           <Formik
             initialValues={{
               username: "",
