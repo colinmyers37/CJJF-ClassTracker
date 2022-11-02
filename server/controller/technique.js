@@ -12,10 +12,11 @@ module.exports = {
   },
   addTechnique: async (req, res) => {
     console.log(req.body);
-    const { name } = req.body;
+    const { name, category } = req.body;
     try {
       const addTechnique = await Technique.create({
         name,
+        category,
       });
       res.status(200).send(addTechnique);
     } catch (err) {

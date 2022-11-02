@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../../App.css";
 
 const TechniqueCard = () => {
   const [techniques, setTechniques] = useState([]);
@@ -8,26 +10,23 @@ const TechniqueCard = () => {
   }, []);
   console.log(techniques);
   return (
-    <div>
-      <table class="table" style={{ width: "80vw", textAlign: "center" }}>
-        <thead class="thead-light">
+    <div className="d-flex align-center w-100 p-3 table-wrapper">
+      <table className="table table-striped">
+        <thead>
           <tr>
-            <th scope="col">Added Techniques</th>
+            <th scope="col">Technique</th>
+            <th scope="col">Category</th>
           </tr>
         </thead>
         <tbody>
-          {techniques.map((item) => {
-            return [
-              <tr>
-                <td style={{ fontSize: "2rem" }}>{item.name}</td>
-              </tr>,
-            ];
-          })}
+          {techniques.map((technique) => (
+            <tr>
+              <td>{technique.name}</td>
+              <td>{technique.category}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      {/* {techniques.map((technique) => {
-        return <h2>{technique.name}</h2>;
-      })} */}
     </div>
   );
 };

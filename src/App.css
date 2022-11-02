@@ -56,3 +56,8 @@
   text-decoration: none;
   color: red;
 }
+.table-wrapper {
+  max-height: 80vh;
+  overflow: auto;
+  display: inline-block;
+}
