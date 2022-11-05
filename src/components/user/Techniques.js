@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import AddTechnique from '../main/AddTechnique/AddTechnique';
 import TechniqueCard from '../main/TechniqueCard/TechniqueCard';
-import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTechniqueModal from '../main/AddTechniqueModal/AddTechniqueModal';
 
@@ -41,7 +39,7 @@ const Techniques = () => {
           }}
         >
           {/* <AddTechnique /> */}
-          <a
+          <button
             data-target="#myModal"
             data-toggle="modal"
             id="MainNavHelp"
@@ -49,12 +47,15 @@ const Techniques = () => {
             style={{
               color: '#A11F22',
               textDecoration: 'none',
-              marginTop: '5px',
+              marginTop: '10px',
+              border: 'none',
+              padding: '0px',
+              backgroundColor: 'white',
             }}
             onClick={modalHandler}
           >
             Add Technique
-          </a>
+          </button>
           {modalOpen && <AddTechniqueModal closeModal={setModalOpen} />}
           <TechniqueCard />
         </div>
