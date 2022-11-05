@@ -1,0 +1,14 @@
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: #a11f22;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContainer {
+  background-color: white;
+  width: 70vw;
+  height: 50vh;
+}
