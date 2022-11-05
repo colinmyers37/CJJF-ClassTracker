@@ -1,7 +1,6 @@
 .modalBackground {
   width: 100vw;
   height: 100vh;
-  background-color: #a11f22;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -9,6 +8,11 @@
 }
 .modalContainer {
   background-color: white;
-  width: 70vw;
-  height: 50vh;
+  width: 500px;
+  height: 500px;
+  border-radius: 12px;
+  box-shadow: black 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
 }
