@@ -73,7 +73,7 @@ const SessionCard = () => {
         <div className="row">
           {sessions.map((session) => {
             return (
-              <div className="col-auto mb-3">
+              <div className="col-4 mb-3">
                 <Card>
                   <Card.Header
                     className="text-center"
@@ -90,12 +90,12 @@ const SessionCard = () => {
                     </h4>
                   </Card.Header>
                   <Card.Body>
-                    <Card.Title>
+                    <Card.Title className="text-center">
                       Class Date: {moment(session.date).format('LL')}
                     </Card.Title>
 
                     <Card.Text className="text-center">
-                      Techniqes Learned:
+                      Techniques Learned:
                     </Card.Text>
                     <Card.Text className="text-center">
                       {session.lesson}
