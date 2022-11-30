@@ -57,10 +57,10 @@ const InsightsPage = () => {
           >
             Add Session
           </button>
-          {modalOpen && <AddSessionModal closeModal={setModalOpen} />}
           <SessionCard />
         </div>
       </div>
+      {modalOpen && <AddSessionModal closeModal={setModalOpen} />}
     </div>
   );
 };
