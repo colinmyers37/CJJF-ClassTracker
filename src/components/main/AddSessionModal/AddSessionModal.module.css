@@ -9,7 +9,7 @@
 .modalContainer {
   background-color: white;
   width: 500px;
-  height: 350px;
+  height: 500px;
   border-radius: 12px;
   box-shadow: black 0px 5px 15px;
   display: flex;
@@ -20,7 +20,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  height: 450px;
 }
 .technique-field {
   width: 300px;
@@ -31,7 +32,6 @@
   width: 300px;
   height: 30px;
   margin: 10px;
-  border-radius: ;
 }
 .modal-a {
   margin: 10px;
@@ -44,4 +44,9 @@
 .modal-a:hover {
   color: black;
   cursor: pointer;
+}
+.column-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }

@@ -65,41 +65,54 @@ const AddSessionModal = ({ closeModal }) => {
           <Form className="">
             <div className={styles['form-container']}>
               <h1>Add Session</h1>
-              <label className="" htmlFor="date" style={{ fontWeight: 'bold' }}>
-                Session Date
-              </label>
-              <Field
-                type="date"
-                name="date"
-                className={styles['technique-field']}
-              ></Field>
-              <label htmlFor="" style={{ fontWeight: 'bold' }}>
-                Techniques Learned
-              </label>
-              <Select
-                options={options}
-                isMulti={true}
-                onChange={handleChange}
-                htmlFor="lesson"
-                name="lesson"
-                className={styles['technique-field']}
-              />
-              <Button
-                className="btn-danger"
-                type={'submit'}
-                style={{
-                  width: '150px',
-                  height: '35px',
-                  backgroundColor: '#A11F22',
-                  padding: '0px',
-                  margin: '10px',
-                }}
-              >
-                Add Technique
-              </Button>
-              <button onClick={closeModalHandler} className={styles['modal-a']}>
-                Back
-              </button>
+              <div className={styles['column-wrapper']}>
+                <label
+                  className=""
+                  htmlFor="date"
+                  style={{ fontWeight: 'bold' }}
+                >
+                  Session Date
+                </label>
+                <Field
+                  type="date"
+                  name="date"
+                  className={styles['technique-field']}
+                ></Field>
+              </div>
+              <div className={styles['column-wrapper']}>
+                <label htmlFor="" style={{ fontWeight: 'bold' }}>
+                  Techniques Learned
+                </label>
+                <Select
+                  options={options}
+                  isMulti={true}
+                  onChange={handleChange}
+                  htmlFor="lesson"
+                  name="lesson"
+                  className={styles['technique-field']}
+                />
+              </div>
+              <div className={styles['column-wrapper']}>
+                <Button
+                  className="btn-danger"
+                  type={'submit'}
+                  style={{
+                    width: '150px',
+                    height: '35px',
+                    backgroundColor: '#A11F22',
+                    padding: '0px',
+                    margin: '10px',
+                  }}
+                >
+                  Add Technique
+                </Button>
+                <button
+                  onClick={closeModalHandler}
+                  className={styles['modal-a']}
+                >
+                  Back
+                </button>
+              </div>
             </div>
           </Form>
         </Formik>
