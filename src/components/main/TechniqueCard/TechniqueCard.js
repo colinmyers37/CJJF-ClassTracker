@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../../App.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../../App.css';
 
 const TechniqueCard = () => {
   const [techniques, setTechniques] = useState([]);
@@ -10,7 +10,12 @@ const TechniqueCard = () => {
   }, []);
   console.log(techniques);
   return (
-    <div className="d-flex align-center w-100 p-3 table-wrapper">
+    <div
+      className="d-flex align-center p-3 table-wrapper"
+      style={{
+        width: '85vw',
+      }}
+    >
       <table className="table table-striped">
         <thead>
           <tr>
